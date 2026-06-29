@@ -1,0 +1,185 @@
+# Project 03: ROS2 Turtle Controller
+
+## Overview
+
+This project demonstrates robot control using ROS2 by controlling the `turtlesim` simulator. A custom ROS2 node publishes velocity commands to the turtle, causing it to move continuously in a circular trajectory.
+
+This project introduces the concept of controlling a robot using ROS2 topics and velocity messages.
+
+---
+
+## Concepts Learned
+
+* ROS2 Nodes
+* Publishers
+* Topics
+* Message Types
+* Timers
+* Callback Functions
+* Robot Control
+* Velocity Commands
+* geometry_msgs/Twist
+* Interacting with Existing ROS2 Nodes
+
+---
+
+## Project Structure
+
+```text
+turtle_controller/
+├── package.xml
+├── setup.py
+├── setup.cfg
+├── resource/
+│   └── turtle_controller
+└── turtle_controller/
+    ├── __init__.py
+    └── turtle_controller.py
+```
+
+---
+
+## System Architecture
+
+```text
+Turtle Controller Node
+            |
+            | publishes geometry_msgs/Twist
+            v
+      /turtle1/cmd_vel
+            |
+            v
+        Turtlesim
+```
+
+---
+
+## Message Type Used
+
+```python
+geometry_msgs/msg/Twist
+```
+
+The `Twist` message contains:
+
+```text
+Linear Velocity
+Angular Velocity
+```
+
+Example:
+
+```python
+msg.linear.x = 2.0
+msg.angular.z = 1.0
+```
+
+This causes the turtle to move forward while rotating, producing a circular trajectory.
+
+---
+
+## Controller Logic
+
+The controller node:
+
+* Creates a publisher on `/turtle1/cmd_vel`
+* Creates a timer callback every 0.5 seconds
+* Generates velocity commands
+* Publishes `Twist` messages to the turtle
+
+Example output:
+
+```text
+[turtle_controller]: Moving turtle
+[turtle_controller]: Moving turtle
+[turtle_controller]: Moving turtle
+```
+
+---
+
+## Build Instructions
+
+Navigate to the workspace:
+
+```bash
+cd ~/ros2_learning_ws
+```
+
+Build the workspace:
+
+```bash
+colcon build
+```
+
+Source the workspace:
+
+```bash
+source install/setup.bash
+```
+
+---
+
+## Running the Project
+
+### Terminal 1
+
+Launch the simulator:
+
+```bash
+ros2 run turtlesim turtlesim_node
+```
+
+### Terminal 2
+
+Run the controller:
+
+```bash
+source ~/ros2_learning_ws/install/setup.bash
+ros2 run turtle_controller turtle_controller
+```
+
+---
+
+## ROS2 Inspection Commands
+
+List active nodes:
+
+```bash
+ros2 node list
+```
+
+List topics:
+
+```bash
+ros2 topic list
+```
+
+Inspect the velocity topic:
+
+```bash
+ros2 topic info /turtle1/cmd_vel
+```
+
+Monitor velocity commands:
+
+```bash
+ros2 topic echo /turtle1/cmd_vel
+```
+
+---
+
+## Key Takeaways
+
+This project demonstrates how robots are controlled in ROS2 using velocity commands. The same concept is used in:
+
+* Turtlebot
+* Navigation2
+* AGVs
+* Autonomous Mobile Robots
+* Warehouse Robots
+* Delivery Robots
+
+This project marks the transition from learning ROS2 communication to learning robot control.
+
+---
+
