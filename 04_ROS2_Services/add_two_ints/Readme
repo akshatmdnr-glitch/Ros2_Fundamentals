@@ -1,0 +1,132 @@
+# Project 04: ROS2 Service Client-Server
+
+## Overview
+
+This project demonstrates the ROS2 Service-Client communication model using the built-in `AddTwoInts` service.
+
+Unlike Publisher-Subscriber communication, Services provide a synchronous request-response mechanism where a client sends a request and waits for a response from the server.
+
+---
+
+## Concepts Learned
+
+* ROS2 Services
+* ROS2 Clients
+* Request-Response Communication
+* Service Servers
+* Service Clients
+* Built-in ROS2 Service Types
+* Blocking Communication Patterns
+
+---
+
+## System Architecture
+
+```text
+Client
+   |
+   | Request: a, b
+   v
+Server
+   |
+   | Response: sum
+   v
+Client
+```
+
+---
+
+## Service Type Used
+
+```python
+example_interfaces/srv/AddTwoInts
+```
+
+Request:
+
+```text
+a
+b
+```
+
+Response:
+
+```text
+sum
+```
+
+Example:
+
+```text
+Request:
+5 + 7
+
+Response:
+12
+```
+
+---
+
+## Project Structure
+
+```text
+add_two_ints/
+├── package.xml
+├── setup.py
+├── setup.cfg
+├── resource/
+│   └── add_two_ints
+└── add_two_ints/
+    ├── __init__.py
+    ├── add_two_ints_server.py
+    └── add_two_ints_client.py
+```
+
+---
+
+## Build Instructions
+
+```bash
+cd ~/ros2_learning_ws
+colcon build
+source install/setup.bash
+```
+
+---
+
+## Running the Project
+
+### Terminal 1
+
+```bash
+ros2 run add_two_ints add_two_ints_server
+```
+
+### Terminal 2
+
+```bash
+ros2 run add_two_ints add_two_ints_client
+```
+
+Expected output:
+
+```text
+Result: 12
+```
+
+---
+
+## Key Takeaways
+
+This project introduces ROS2 Services and demonstrates synchronous communication using a request-response pattern. Services are widely used in robotics for:
+
+* Robot control commands
+* Parameter updates
+* Sensor calibration
+* Navigation requests
+* Drone arming/disarming
+* Status queries
+
+---
+
+
