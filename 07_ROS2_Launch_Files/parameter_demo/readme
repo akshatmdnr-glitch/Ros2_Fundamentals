@@ -1,0 +1,69 @@
+# Project 07 – ROS2 Launch Files
+
+## Overview
+
+This project demonstrates how to launch multiple ROS2 nodes using a single launch file.
+
+Instead of starting each node manually with `ros2 run`, a launch file automates the startup of an entire ROS2 application.
+
+---
+
+## Nodes Launched
+
+- parameter_node
+- turtlesim_node
+
+Both nodes are started simultaneously using one command.
+
+---
+
+## Concepts Learned
+
+- ROS2 Launch System
+- LaunchDescription
+- Node Action
+- Launching Multiple Nodes
+- Passing Parameters from Launch Files
+- Installing Launch Files with setup.py
+
+---
+
+## Launch File
+
+```python
+Node(
+    package='parameter_demo',
+    executable='parameter_node',
+    parameters=[
+        {
+            'message': 'Started From Launch File'
+        }
+    ]
+)
+```
+
+---
+
+## Build
+
+```bash
+colcon build --packages-select parameter_demo
+```
+
+---
+
+## Launch
+
+```bash
+ros2 launch parameter_demo parameter_demo.launch.py
+```
+
+---
+
+## Skills Demonstrated
+
+- ROS2 Launch Files
+- Multi-node Applications
+- Runtime Configuration
+- Python Launch API
+- ROS2 Package Structure
