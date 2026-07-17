@@ -1,0 +1,106 @@
+# Project 05 – Custom ROS2 Actions
+
+## Overview
+
+This project demonstrates how to create and use a custom ROS2 Action.
+
+Unlike Topics and Services, Actions are designed for long-running tasks that require continuous feedback while executing.
+
+The project implements a Countdown Action where:
+
+- A client sends a countdown goal.
+- The server accepts the goal.
+- The server publishes feedback every second.
+- The server returns a success result when the countdown completes.
+
+---
+
+## Packages
+
+### countdown_action
+
+Defines the custom Action interface.
+
+**Countdown.action**
+
+```text
+int32 seconds
+---
+bool success
+---
+int32 remaining
+```
+
+---
+
+### countdown_nodes
+
+Contains:
+
+- Action Server
+- Action Client
+
+---
+
+## ROS2 Concepts Learned
+
+- Custom Action Interfaces
+- ActionServer
+- ActionClient
+- Goal Handling
+- Feedback Messages
+- Result Messages
+- Asynchronous Communication
+- rosidl Interface Generation
+
+---
+
+## Communication Flow
+
+```text
+Client
+   │
+   │ Goal
+   ▼
+Action Server
+   │
+   ├── Feedback
+   ├── Feedback
+   ├── Feedback
+   ▼
+Result
+```
+
+---
+
+## Build
+
+```bash
+colcon build --packages-select countdown_action countdown_nodes
+```
+
+---
+
+## Run Server
+
+```bash
+ros2 run countdown_nodes countdown_server
+```
+
+---
+
+## Run Client
+
+```bash
+ros2 run countdown_nodes countdown_client
+```
+
+---
+
+## Skills Demonstrated
+
+- ROS2 Actions
+- Python (rclpy)
+- Custom Interface Design
+- Asynchronous Programming
+- Robotics Communication
