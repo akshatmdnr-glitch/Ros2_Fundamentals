@@ -1,0 +1,5 @@
+int32 seconds
+---
+bool success
+---
+int32 remaining
