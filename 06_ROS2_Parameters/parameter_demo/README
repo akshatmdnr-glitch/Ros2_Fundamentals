@@ -1,0 +1,83 @@
+# Project 06 – ROS2 Parameters
+
+## Overview
+
+This project demonstrates how to use **ROS2 Parameters** to configure node behavior without modifying the source code.
+
+The node periodically prints a message that is stored as a ROS2 parameter. The parameter can be changed at runtime using the ROS2 command-line interface.
+
+---
+
+## Concepts Learned
+
+- Declaring parameters
+- Reading parameter values
+- Default parameter values
+- Runtime parameter updates
+- Parameter inspection using ROS2 CLI
+
+---
+
+## Node
+
+**parameter_node**
+
+The node:
+
+- Declares a parameter named `message`
+- Assigns a default value of `"Hello ROS2!"`
+- Prints the current value every second
+- Reads the parameter on every timer callback
+
+---
+
+## Build
+
+```bash
+colcon build --packages-select parameter_demo
+```
+
+---
+
+## Run
+
+```bash
+ros2 run parameter_demo parameter_node
+```
+
+---
+
+## Useful Commands
+
+### List parameters
+
+```bash
+ros2 param list
+```
+
+### Get parameter value
+
+```bash
+ros2 param get /parameter_node message
+```
+
+### Change parameter
+
+```bash
+ros2 param set /parameter_node message "Hello Akshat!"
+```
+
+### Describe parameter
+
+```bash
+ros2 param describe /parameter_node message
+```
+
+---
+
+## Skills Demonstrated
+
+- ROS2 Parameters
+- Python (rclpy)
+- Runtime Configuration
+- ROS2 Command Line Tools
