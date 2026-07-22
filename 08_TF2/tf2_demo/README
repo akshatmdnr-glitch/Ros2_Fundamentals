@@ -1,0 +1,89 @@
+# Project 08 – ROS2 TF2
+
+## Overview
+
+This project demonstrates the fundamentals of the ROS2 TF2 library.
+
+The project covers both static and dynamic coordinate transforms and shows how robots represent the positions of different components using coordinate frames.
+
+---
+
+## Concepts Learned
+
+- Coordinate Frames
+- Parent and Child Frames
+- Static Transform Publisher
+- Dynamic Transform Broadcaster
+- Translation
+- Rotation
+- TF Tree
+- tf2_echo
+- view_frames
+
+---
+
+## Static Transform
+
+Published a static transform between:
+
+base_link → camera_link
+
+Translation:
+
+- x = 0.20 m
+- y = 0.00 m
+- z = 0.10 m
+
+---
+
+## Dynamic Transform
+
+Implemented a custom Python TF broadcaster that continuously publishes:
+
+odom → base_link
+
+The robot moves along the x-axis over time.
+
+---
+
+## Build
+
+```bash
+colcon build --packages-select tf2_demo
+```
+
+---
+
+## Run
+
+```bash
+ros2 run tf2_demo dynamic_tf_broadcaster
+```
+
+---
+
+## Inspect Transform
+
+```bash
+ros2 run tf2_ros tf2_echo odom base_link
+```
+
+---
+
+## Generate TF Tree
+
+```bash
+ros2 run tf2_tools view_frames
+```
+
+---
+
+## Skills Demonstrated
+
+- ROS2 TF2
+- TransformBroadcaster
+- TransformStamped
+- Static Transforms
+- Dynamic Transforms
+- Coordinate Systems
+- Robot Localization Fundamentals
